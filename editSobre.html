@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações | Painel Admin</title>
+    <link rel="stylesheet" href="editSobre.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-text">
+            <h1>Configurações do Site</h1>
+            <span>Painel Administrativo</span>
+        </div>
+        <div class="nav-links">
+            <a href="sobre.html" target="_blank" class="btn-coral">Ver Página no Ar</a>
+        </div>
+    </nav>
+
+    <section class="section-wrapper bg-beige">
+        <div class="admin-grid">
+            
+            <!-- FORMULÁRIO DE EDIÇÃO -->
+            <div class="form-card">
+                <h2 style="color: var(--teal-dark); margin-bottom: 1.5rem;">Editar Conteúdo do "Sobre"</h2>
+
+                <form id="form-admin-config">
+                    <div class="form-group">
+                        <label>Tagline (Subtítulo Superior)</label>
+                        <input type="text" id="input-tagline" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Título Principal</label>
+                        <input type="text" id="input-title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Texto da Biografia (Permite reescrever totalmente)</label>
+                        <textarea id="input-text-content" rows="10" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subir Nova Foto ou Colar URL</label>
+                        <input type="file" id="input-photo-file" accept="image/*">
+                        <input type="url" id="input-photo-url" placeholder="https://exemplo.com/foto.jpg">
+                    </div>
+
+                    <!-- AJUSTE DE PROPORÇÕES E ENQUADRAMENTO DA FOTO -->
+                    <div class="controls-box">
+                        <h4 style="color: var(--teal-dark); font-size: 0.9rem;">Ajustar Proporções da Foto (Crop/Zoom)</h4>
+                        
+                        <div class="range-group">
+                            <label>Zoom (Escala): <span id="val-zoom">100%</span></label>
+                            <input type="range" id="crop-zoom" min="50" max="250" value="100">
+                        </div>
+
+                        <div class="range-group">
+                            <label>Posição Horizontal (X): <span id="val-x">0px</span></label>
+                            <input type="range" id="crop-x" min="-150" max="150" value="0">
+                        </div>
+
+                        <div class="range-group">
+                            <label>Posição Vertical (Y): <span id="val-y">0px</span></label>
+                            <input type="range" id="crop-y" min="-150" max="150" value="0">
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btn-save" class="btn-teal" style="width: 100%; margin-top: 1.5rem;">Salvar Alterações</button>
+                    <p id="msg-status" style="display: none; color: green; text-align: center; font-weight: bold; margin-top: 1rem;">Alterações salvas com sucesso!</p>
+                </form>
+            </div>
+
+            <!-- PREVIEW EM TEMPO REAL DA PÁGINA SOBRE -->
+            <div style="position: sticky; top: 90px;">
+                <h3 style="color: var(--teal-dark); margin-bottom: 1rem; font-size: 1.1rem;">Preview na Página</h3>
+                
+                <div class="form-card" style="padding: 1.5rem;">
+                    <div class="photo-container" style="margin: 0 auto;">
+                        <img id="preview-photo" src="cwc.jpg" alt="Preview Foto">
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <span class="tagline" id="preview-tagline" style="color: var(--coral); font-size: 0.7rem;">TRAJETÓRIA</span>
+                        <h4 id="preview-title" style="color: var(--teal-dark); font-size: 1.2rem; margin-bottom: 0.5rem;">Sobre mim</h4>
+                        <p id="preview-text" style="font-size: 0.8rem; color: var(--text-dark); max-height: 150px; overflow-y: auto; white-space: pre-line;">Texto de demonstração...</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script type="module" src="admin-config.js"></script>
+</body>
+</html>

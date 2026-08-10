@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle — Celiana Werneck Canto</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 460px 1fr;
+            min-height: calc(100vh - 70px);
+            background: #f4f6f8;
+        }
+
+        .admin-sidebar {
+            background: #ffffff;
+            border-right: 1px solid var(--border-subtle);
+            padding: 2rem;
+            overflow-y: auto;
+            max-height: calc(100vh - 70px);
+        }
+
+        .admin-preview-pane {
+            padding: 2rem;
+            overflow-y: auto;
+            max-height: calc(100vh - 70px);
+        }
+
+        .preview-wrapper {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .preview-banner {
+            background: var(--teal-dark);
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.4rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--teal-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--teal-medium);
+        }
+
+        .admin-section-header {
+            font-size: 1.05rem;
+            color: var(--teal-dark);
+            margin: 1.8rem 0 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid var(--bg-mint);
+            font-weight: 700;
+        }
+
+        .image-adjuster-box {
+            background: var(--yellow-soft);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(220, 200, 150, 0.4);
+            margin-top: 0.8rem;
+        }
+
+        .slider-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 0.6rem;
+        }
+
+        .slider-row span {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            width: 70px;
+            font-weight: 600;
+        }
+
+        .service-entry-card {
+            background: var(--bg-beige);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .btn-delete-service {
+            background: #ef4444;
+            color: #ffffff;
+            border: none;
+            padding: 0.35rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            float: right;
+            font-weight: 600;
+        }
+
+        .btn-add-service {
+            background: var(--teal-medium);
+            color: #ffffff;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .icon-grid-picker {
+            display: flex;
+            gap: 8px;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .icon-tile {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: #ffffff;
+            color: var(--teal-dark);
+        }
+
+        .icon-tile.selected {
+            border-color: var(--coral);
+            background: var(--bg-mint);
+            box-shadow: 0 0 0 2px var(--coral);
+        }
+
+        .btn-publish {
+            position: sticky;
+            bottom: 0;
+            background: var(--coral);
+            color: #ffffff;
+            border: none;
+            padding: 1rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 97, 0.3);
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .admin-layout { grid-template-columns: 1fr; }
+            .admin-sidebar, .admin-preview-pane { max-height: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-text">
+            <h1>Painel Gerenciador</h1>
+            <span>CELIANA WERNECK</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" target="_blank">Visualizar Site no Ar ↗</a>
+        </div>
+    </nav>
+
+    <div class="admin-layout">
+        <!-- FORMULÁRIO DE CONFIGURAÇÕES -->
+        <aside class="admin-sidebar">
+            <h2>Edição</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Atualize as informações da página principal</p>
+
+            <form id="editor-form">
+                <div class="admin-section-header">1. Modifique os títulos, subtítulos e textos.</div>
+                
+                <div class="form-group">
+                    <label for="field-main-title">Título Principal</label>
+                    <textarea id="field-main-title" class="form-control" rows="2"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="field-main-subtitle">Subtítulo</label>
+                    <textarea id="field-main-subtitle" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="field-highlight-quote">Frase de Destaque </label>
+                    <textarea id="field-highlight-quote" class="form-control" rows="2"></textarea>
+                </div>
+
+                <div class="admin-section-header">2. Foto da Psicóloga</div>
+                
+                <div class="form-group">
+                    <label for="field-image-file">Carregar Nova Imagem</label>
+                    <input type="file" id="field-image-file" class="form-control" accept="image/*">
+                </div>
+
+                <div class="image-adjuster-box">
+                    <label style="font-size: 0.8rem; font-weight: 700; color: var(--teal-dark);">Ajustar Enquadramento da Foto</label>
+                    
+                    <div class="slider-row">
+                        <span>Zoom:</span>
+                        <input type="range" id="slider-zoom" min="1" max="2.5" step="0.05" value="1" class="form-control">
+                    </div>
+
+                    <div class="slider-row">
+                        <span>Mover X:</span>
+                        <input type="range" id="slider-pos-x" min="-100" max="100" step="1" value="0" class="form-control">
+                    </div>
+
+                    <div class="slider-row">
+                        <span>Mover Y:</span>
+                        <input type="range" id="slider-pos-y" min="-100" max="100" step="1" value="0" class="form-control">
+                    </div>
+                </div>
+
+                <div class="admin-section-header">3. Serviços Oferecidos</div>
+                <div id="services-form-list">
+                    <!-- Entradas de serviços adicionadas via JS -->
+                </div>
+                <button type="button" id="btn-create-service" class="btn-add-service">+ Adicionar Outro Serviço</button>
+
+                <button type="submit" class="btn-publish" id="btn-submit-all">Salvar</button>
+            </form>
+        </aside>
+
+        <!-- ÁREA DE PREVIEW -->
+        <main class="admin-preview-pane">
+            <div class="preview-wrapper">
+                <div class="preview-banner">
+                    <span>Pré-visualização</span>
+                    <span style="opacity: 0.75;">Layout da página</span>
+                </div>
+
+                <div class="preview-content">
+                    <!-- PREVIEW HERO -->
+                    <section class="section-wrapper bg-beige" style="padding: 2.5rem 5%;">
+                        <div class="hero">
+                            <div class="hero-left">
+                                <span class="tagline">PSICOLOGIA É CUIDADO</span>
+                                <h2 class="hero-title" id="preview-main-title" style="font-size: 2rem;">---</h2>
+                                <p class="hero-description" id="preview-main-subtitle" style="font-size: 0.9rem;">---</p>
+                                <a href="#" class="btn-teal" style="font-size: 0.85rem; padding: 0.6rem 1.2rem;">Agendar sessão</a>
+                            </div>
+
+                            <div class="hero-image-wrapper">
+                                <div class="quote-card" style="width: 190px; padding: 1rem; font-size: 0.78rem;">
+                                    <p id="preview-highlight-quote">---</p>
+                                </div>
+                                <div class="photo-container" style="width: 200px; height: 260px; border-radius: 100px 100px 16px 16px;">
+                                    <img id="preview-profile-image" src="" alt="Preview da Foto">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- PREVIEW SERVIÇOS -->
+                    <section class="section-wrapper bg-beige" style="padding: 2.5rem 5%; border-top: 1px solid var(--border-subtle);">
+                        <div class="section-header" style="margin-bottom: 2rem;">
+                            <span class="tagline">COMO POSSO TE AJUDAR</span>
+                            <h2 class="section-title" style="font-size: 1.6rem;">Serviços</h2>
+                        </div>
+                        <div class="services-grid" id="preview-services-grid" style="gap: 1rem;">
+                            <!-- Injetado dinamicamente -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="adm.js"></script>
+</body>
+</html>

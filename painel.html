@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações | Painel Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR ADMIN -->
+    <nav class="navbar">
+        <div class="logo-text">
+            <h1>Configurações do Site</h1>
+            <span>Painel Administrativo</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="btn-coral">Ver Página no Ar</a>
+            <button id="btn-logout" class="btn-teal" style="display: none; padding: 0.5rem 1rem;">Sair</button>
+        </div>
+    </nav>
+
+    <!-- TELA DE LOGIN (Mostrada se não estiver autenticado) -->
+    <section id="login-section" class="section-wrapper bg-beige" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div class="service-card" style="max-width: 400px; width: 100%;">
+            <h2 style="color: var(--teal-dark); margin-bottom: 0.5rem; text-align: center;">Área Restrita</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;">Acesso exclusivo da administração</p>
+            
+            <form id="form-login" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div class="form-group">
+                    <label style="font-weight: 600; color: var(--teal-dark);">E-mail</label>
+                    <input type="email" id="login-email" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group">
+                    <label style="font-weight: 600; color: var(--teal-dark);">Senha</label>
+                    <input type="password" id="login-password" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+                </div>
+                <button type="submit" class="btn-teal" style="width: 100%; margin-top: 0.5rem;">Entrar no Painel</button>
+                <p id="login-error" style="color: var(--coral); font-size: 0.85rem; text-align: center; display: none;">Credenciais inválidas ou sem permissão.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- PAINEL DE EDIÇÃO (Oculto até realizar o login) -->
+    <section id="admin-content" class="section-wrapper bg-beige" style="display: none;">
+        <div class="admin-grid">
+            
+            <!-- FORMULÁRIO DE EDIÇÃO -->
+            <div class="service-card" style="padding: 2rem;">
+                <h2 style="color: var(--teal-dark); margin-bottom: 1.5rem; font-size: 1.4rem;">Editar Conteúdo das Páginas</h2>
+
+                <form id="form-admin-config">
+                    <div class="form-group" style="margin-bottom: 1.2rem;">
+                        <label style="font-weight: 700; color: var(--teal-dark);">Tagline (Subtítulo Superior)</label>
+                        <input type="text" id="input-tagline" required style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.2rem;">
+                        <label style="font-weight: 700; color: var(--teal-dark);">Título Principal (Início)</label>
+                        <input type="text" id="input-title" required style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.2rem;">
+                        <label style="font-weight: 700; color: var(--teal-dark);">Subtítulo / Descrição Inicial</label>
+                        <input type="text" id="input-subtitle" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.2rem;">
+                        <label style="font-weight: 700; color: var(--teal-dark);">Frase em Destaque (Quote)</label>
+                        <input type="text" id="input-quote" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.2rem;">
+                        <label style="font-weight: 700; color: var(--teal-dark);">Texto de Biografia (Sobre Mim)</label>
+                        <textarea id="input-text-content" rows="6" required style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc; font-family: inherit;"></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.2rem;">
+                        <label style="font-weight: 700; color: var(--teal-dark);">Foto de Perfil</label>
+                        <input type="file" id="input-photo-file" accept="image/*" style="margin-bottom: 0.5rem;">
+                        <input type="url" id="input-photo-url" placeholder="https://exemplo.com/foto.jpg" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+                    </div>
+
+                    <!-- CONTROLES DE ENQUADRAMENTO DA FOTO -->
+                    <div style="background: var(--bg-mint); padding: 1.2rem; border-radius: 12px; margin-top: 1rem;">
+                        <h4 style="color: var(--teal-dark); font-size: 0.9rem; margin-bottom: 0.8rem;">Enquadramento da Foto (Crop/Zoom)</h4>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <label style="font-size: 0.8rem; font-weight: 600;">Zoom: <span id="val-zoom">100%</span></label>
+                            <input type="range" id="crop-zoom" min="50" max="250" value="100">
+
+                            <label style="font-size: 0.8rem; font-weight: 600;">Posição X: <span id="val-x">0px</span></label>
+                            <input type="range" id="crop-x" min="-150" max="150" value="0">
+
+                            <label style="font-size: 0.8rem; font-weight: 600;">Posição Y: <span id="val-y">0px</span></label>
+                            <input type="range" id="crop-y" min="-150" max="150" value="0">
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btn-save" class="btn-teal" style="width: 100%; margin-top: 1.5rem;">Salvar Alterações</button>
+                    <p id="msg-status" style="display: none; color: green; text-align: center; font-weight: bold; margin-top: 1rem;">Alterações salvas com sucesso!</p>
+                </form>
+            </div>
+
+            <!-- PREVIEW EM TEMPO REAL -->
+            <div style="position: sticky; top: 90px;">
+                <h3 style="color: var(--teal-dark); margin-bottom: 1rem; font-size: 1.1rem;">Preview no Site</h3>
+                
+                <div class="service-card" style="padding: 1.5rem;">
+                    <div class="hero-image-wrapper" style="margin-bottom: 1rem;">
+                        <div class="quote-card" style="position: relative; width: 100%; margin-bottom: 1rem;">
+                            <p id="preview-quote" style="font-size: 0.8rem;">"Frase de exemplo..."</p>
+                        </div>
+                        <div class="photo-container" style="margin: 0 auto;">
+                            <img id="preview-photo" src="cwc.jpg" alt="Preview Foto">
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="tagline" id="preview-tagline" style="font-size: 0.7rem;">TAGLINE</span>
+                        <h4 id="preview-title" style="color: var(--teal-dark); font-size: 1.1rem; margin-bottom: 0.3rem;">Título</h4>
+                        <p id="preview-subtitle" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.8rem;">Subtítulo...</p>
+                        <p id="preview-text" style="font-size: 0.8rem; color: var(--text-dark); max-height: 120px; overflow-y: auto; white-space: pre-line;">Texto de apresentação...</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script type="module" src="editSobre.js"></script>
+</body>
+</html>
