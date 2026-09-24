@@ -3,229 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celiana Werneck Canto | Psicóloga Clínica - CRP 05/79065</title>
+    <title>gForc_Art</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <!-- NAVBAR -->
-<!-- NAVBAR -->
-<!-- NAVBAR DO INDEX -->
-<nav class="navbar">
-    <div class="logo-text">
-        <h1>Celiana Werneck Canto</h1>
-        <span>PSICÓLOGA - CRP 05/79065</span>
-    </div>
-    <div class="nav-links">
-        <a href="index.html" class="active">Início</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="#abordagem">Abordagem</a>
-        <a href="#servicos">Serviços</a>
-        
-        <!-- Este link fica oculto para visitantes e só aparece quando você/dona estiverem logados -->
-        <a href="editSobre.html" id="nav-edit-btn" style="display: none; color: var(--coral); font-weight: 700;">⚙️ Configurações</a>
-        
-        <!-- Botão discreto no final para vocês realizarem o login quando quiserem editar -->
-        <a href="#" id="btn-admin-login" style="opacity: 0.5; font-size: 0.8rem;">Área Restrita</a>
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon"><i class="fa-solid fa-paint-brush"></i></span>
+            <span class="logo-text">gForce_ART</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
-        <a href="#" class="btn-coral">Agendar sessão</a>
-    </div>
-</nav>
+        <!-- Menu Drawer Dropdown -->
+        <nav class="nav-drawer" id="navDrawer">
+            <ul>
+                <li>
+                    <a href="index.html" class="active">
+                        <i class="fa-solid fa-house"></i> Início
+                    </a>
+                </li>
+                <li>
+                    <a href="personagens.html">
+                        <i class="fa-solid fa-users"></i> Personagens
+                    </a>
+                </li>
+                <li>
+                    <a href="artes.html">
+                        <i class="fa-solid fa-image"></i> Desenhos
+                    </a>
+                </li>
+                <li>
+               <li id="adminLink" style="display:none;">
+    <a href="configuracoes.html">
+        Configurações
+    </a>
+</li>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- HERO SECTION -->
-    <section class="section-wrapper bg-beige">
-        <div class="hero">
-            <div class="hero-left">
-                <span class="tagline">PSICOLOGIA É CUIDADO</span>
-                <h2 class="hero-title" id="home-title">Um espaço seguro para você ser <i>quem é.</i></h2>
-                <p class="hero-description" id="home-subtitle">A psicoterapia é um caminho de autoconhecimento, acolhimento e transformação. Vamos juntos?</p>
-                
-                <div class="hero-actions">
-                    <a href="#" class="btn-teal">Agendar sessão</a>
-                </div>
+    <main class="container">
+        <!-- Hero Card -->
+        <section class="profile-card">
+            <div class="avatar-container">
+                <img id="artist-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=500&auto=format&fit=crop" alt="Foto da Artista">
+                <span class="badge" id="artist-badge">
+                    <i class="fa-solid fa-palette"></i> <span id="badge-text">Artista</span>
+                </span>
+            </div>
 
-                <div class="hero-badges">
-                    <div class="badge-item">
-                        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        Atendimento humanizado
+            <div class="sub-badge" id="artist-subtitle">BEM-VINDO AO MEU UNIVERSO ARTÍSTICO</div>
+
+            <h1 class="main-title" id="artist-title">gForc_ART</h1>
+
+            <p class="description" id="artist-description">
+                Ilustradora e criadora de universos conceituais. Aqui você encontrará os perfis completos dos meus personagens, suas histórias, fichas de afinidade e uma galeria com todas as minhas artes digitais e tradicionais.
+            </p>
+
+            <div class="social-links">
+                <a href="#" id="link-instagram" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" id="link-secondary" target="_blank" aria-label="Dashes"><i class="fa-solid fa-circle-notch"></i></a>
+                <a href="#" id="link-artstation" target="_blank" aria-label="ArtStation"><i class="fa-brands fa-artstation"></i></a>
+            </div>
+        </section>
+
+        <!-- Seções com Links solicitados -->
+        <section class="navigation-sections">
+            <a href="personagens.html" class="nav-card">
+                <div class="nav-card-info">
+                    <div class="nav-card-title">
+                        <i class="fa-solid fa-users icon"></i>
+                        <h2>PERSONAGENS EM DESTAQUE</h2>
                     </div>
-                    <div class="badge-item">
-                        <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        Sigilo e ética profissional
+                    <p>Conheça os protagonistas e figuras do meu universo</p>
+                </div>
+                <div class="nav-card-action">
+                    <span>Ver Todos</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <a href="artes.html" class="nav-card">
+                <div class="nav-card-info">
+                    <div class="nav-card-title">
+                        <i class="fa-solid fa-wand-magic-sparkles icon"></i>
+                        <h2>ILUSTRAÇÕES RECENTES</h2>
                     </div>
+                    <p>Últimos desenhos e conceitos publicados</p>
                 </div>
-            </div>
+                <div class="nav-card-action">
+                    <span>Ir para Galeria</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+        </section>
+    </main>
 
-            <div class="hero-image-wrapper">
-                <div class="quote-card">
-                    <p id="home-quote">"Você não precisa ter todas as respostas agora. Está tudo bem dar um passo de cada vez."</p>
-                </div>
-                <!-- Espaço padronizado para foto da psicóloga -->
-                <div class="photo-container">
-                    <img src="cwc.jpg" alt="Foto da Psicóloga Celiana Werneck Canto" id="home-photo">
-                </div>
-            </div>
-        </div>
-    </section>
+<footer class="footer">
+    <p>© 2026 gForc_ART. Todos os direitos reservados.</p>
+</footer>
 
-    <!-- BENEFÍCIOS -->
-    <section class="section-wrapper bg-white">
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon-shape">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                </div>
-                <h3>Autoconhecimento</h3>
-                <p>Compreenda suas emoções, padrões e histórias.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon-shape">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-                </div>
-                <h3>Saúde emocional</h3>
-                <p>Desenvolva habilidades para lidar com desafios da vida.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon-shape">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
-                </div>
-                <h3>Equilíbrio e bem-estar</h3>
-                <p>Construa uma vida com mais sentido e leveza.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon-shape">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                </div>
-                <h3>Transformação</h3>
-                <p>Pequenas mudanças que geram grandes resultados.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVIÇOS (SEM OS BOTÕES DE NAVEGAÇÃO) -->
-    <section class="section-wrapper bg-beige" id="servicos">
-        <div class="section-header">
-            <span class="tagline">COMO POSSO TE AJUDAR</span>
-            <h2 class="section-title">Serviços</h2>
-        </div>
-
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="feature-icon-shape">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
-                </div>
-                <h4>Psicoterapia Individual</h4>
-                <p>Espaço de escuta e acolhimento para você compreender o que sente e viver com mais leveza e consciência.</p>
-            </div>
-            <div class="service-card">
-                <div class="feature-icon-shape">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                </div>
-                <h4>Psicoterapia para Adolescentes</h4>
-                <p>Apoio para lidar com inseguranças, emoções intensas e os desafios dessa fase tão importante.</p>
-            </div>
-            <div class="service-card">
-                <div class="feature-icon-shape">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
-                </div>
-                <h4>Orientação Parental</h4>
-                <p>Apoio para pais e mães que desejam fortalecer vínculos e lidar melhor com os desafios da educação.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABORDAGEM -->
-    <section class="section-wrapper bg-white" id="abordagem">
-        <div class="approach-container">
-            <div class="approach-left">
-                <span class="tagline" style="color: #9bbbc3;">MINHA ABORDAGEM</span>
-                <h3>Ciência, acolhimento e respeito à sua história</h3>
-                <p>Trabalho com a abordagem da Terapia Cognitivo-Comportamental (TCC), com foco em promover mudanças reais no seu dia a dia.</p>
-            </div>
-            <div class="approach-right">
-                <div class="checklist-item">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Base científica e práticas eficazes
-                </div>
-                <div class="checklist-item">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Escuta ativa e sem julgamentos
-                </div>
-                <div class="checklist-item">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Plano terapêutico personalizado
-                </div>
-                <div class="checklist-item">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Ambiente seguro e confidencial
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BANNER CTA -->
-    <section class="section-wrapper bg-beige">
-        <div class="cta-banner">
-            <div>
-                <h2>Vamos cuidar de você?</h2>
-                <p>Dê o primeiro passo em direção ao bem-estar e à vida que você deseja viver.</p>
-            </div>
-            <a href="#" class="btn-coral" style="background: var(--bg-white); color: var(--coral) !important;">Agendar sessão</a>
-        </div>
-    </section>
-
-    <!-- RODAPÉ COM ÍCONE DO INSTAGRAM -->
-    <footer class="footer">
-        <div class="footer-top">
-            <div class="footer-brand">
-                <div class="logo-text">
-                    <h1>Celiana Werneck Canto</h1>
-                    <span>PSICÓLOGA</span>
-                </div>
-                <p>Psicologia clínica pautada no acolhimento, na ciência e no respeito à sua história. Atendimento ético e presencial/online.</p>
-            </div>
-
-            <div class="footer-col">
-                <h4>Navegação</h4>
-                <ul>
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="sobre.html">Sobre mim</a></li>
-                    <li><a href="#abordagem">Abordagem</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Serviços</h4>
-                <ul>
-                    <li><a href="#servicos">Psicoterapia Individual</a></li>
-                    <li><a href="#servicos">Psicoterapia para Adolescentes</a></li>
-                    <li><a href="#servicos">Orientação Parental</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Contato & Redes</h4>
-                <ul class="footer-contact">
-                    <li>(21) 99181-3832</li>
-                    <li>contato@celianawerneck.com.br</li>
-                    <li>Rio de Janeiro / Atendimento Online</li>
-                </ul>
-                <!-- Ícone do Instagram oficial -->
-                <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                </a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 Celiana Werneck Canto (CRP 05/79065). Todos os direitos reservados.</p>
-            <p style="margin-top: 5px; font-size: 0.75rem; opacity: 0.7;">Em caso de emergência ou crise, acione o CVV pelo número 188 ou o pronto-socorro mais próximo.</p>
-        </div>
-    </footer>
-
-    <script type="module" src="firebase-app.js"></script>
+    <!-- Script com Firebase Firestore -->
+    
+    <script type="module" src="auth-navbar.js"></script>
+    
+    <script type="module" src="script.js"></script>
 </body>
 </html>
